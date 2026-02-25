@@ -1,0 +1,168 @@
+{
+  "info": {
+    "_postman_id": "bitespeed-collection",
+    "name": "Bitespeed Identity Reconciliation API",
+    "description": "Collection for testing the Bitespeed identify endpoint",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/health",
+          "host": ["{{base_url}}"],
+          "path": ["health"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Identify - New Contact",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"lorraine@hillvalley.edu\",\n  \"phoneNumber\": \"123456\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/identify",
+          "host": ["{{base_url}}"],
+          "path": ["identify"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Identify - New Email Same Phone",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"mcfly@hillvalley.edu\",\n  \"phoneNumber\": \"123456\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/identify",
+          "host": ["{{base_url}}"],
+          "path": ["identify"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Identify - Phone Only",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"phoneNumber\": \"123456\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/identify",
+          "host": ["{{base_url}}"],
+          "path": ["identify"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Identify - Email Only",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"lorraine@hillvalley.edu\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/identify",
+          "host": ["{{base_url}}"],
+          "path": ["identify"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Identify - Link Two Primaries",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"george@hillvalley.edu\",\n  \"phoneNumber\": \"717171\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/identify",
+          "host": ["{{base_url}}"],
+          "path": ["identify"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Identify - Connect Separate Groups",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"george@hillvalley.edu\",\n  \"phoneNumber\": \"123456\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/identify",
+          "host": ["{{base_url}}"],
+          "path": ["identify"]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:3000",
+      "type": "string"
+    }
+  ]
+}
