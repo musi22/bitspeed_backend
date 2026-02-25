@@ -38,7 +38,7 @@ app.post("/identify", async (req: Request, res: Response): Promise<void> => {
         (phoneNumber && c.phoneNumber === phoneNumber)
     );
 
-    let primaryContact;
+    let primaryContact: any;
     let secondaryContactIds: number[] = [];
 
     if (matchingContacts.length === 0) {
