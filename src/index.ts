@@ -88,7 +88,7 @@ async function findPrimaryContact(contactIds: Set<number>): Promise<number> {
 /**
  * Main identify endpoint
  */
-app.post("/identify", async (req: Request, res: Response): Promise<void> => {
+app.post("/api/identify", async (req: Request, res: Response): Promise<void> => {
   try {
     const { email, phoneNumber }: IdentifyRequest = req.body;
 
@@ -260,12 +260,26 @@ app.post("/identify", async (req: Request, res: Response): Promise<void> => {
 });
 
 // Health check endpoint
-app.get("/health", (req: Request, res: Response) => {
+app.get("/api/health", (req: Request, res: Response) => {
   res.json({ status: "ok" });
 });
 
-const PORT = process.env.PORT || 3000;
+// Root endpoint
+app.get("/", (req: Request, res: Response) => {
+  res.json({ 
+    message: "Bitespeed Identity Reconciliation API",
+    endpoints: {
+      identify: "POST /api/identify",
+      health: "GET /api/health"
+    }
+  });
+});
 
+// Export for Vercel
+export default app;
+
+// Start server for local development
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Bitespeed backend running on port ${PORT}`);
 });
