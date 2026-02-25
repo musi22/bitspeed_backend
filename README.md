@@ -164,19 +164,47 @@ Health check endpoint.
 
 ## Deployment
 
-### Using Render.com (Free Tier)
+### Live Endpoint
 
-1. Push your code to GitHub
-2. Create a new PostgreSQL database on Render
-3. Create a new Web Service on Render pointing to your GitHub repo
-4. Set environment variables:
-   - `DATABASE_URL`: Your Render PostgreSQL connection string
-   - `NODE_ENV`: production
-   - `PORT`: 3000 (Render default)
-5. Build command: `npm run build`
-6. Start command: `npm start`
+The API is currently hosted and ready to use:
 
-Your endpoint will be available at: `https://your-app.onrender.com/identify`
+**Base URL:** `https://bitspeed-backend-76xg.onrender.com`
+
+**Identify Endpoint:** `https://bitspeed-backend-76xg.onrender.com/identify`
+
+### Deploying Your Own Instance
+
+#### Option 1: Using Render.com (Recommended)
+
+1. Push your code to GitHub (Done ✓)
+2. Go to [render.com](https://render.com) and sign up
+3. Click "New +" and select "Web Service"
+4. Connect your GitHub repository: `https://github.com/musi22/bitspeed_backend`
+5. Configure the service:
+   - Name: `bitspeed-backend`
+   - Runtime: `Node`
+   - Build Command: `npm install && npm run prisma:generate && npm run build`
+   - Start Command: `npm start`
+6. Add environment variable:
+   - `DATABASE_URL`: PostgreSQL connection string (get free DB from Render or Neon)
+   - `NODE_ENV`: `production`
+7. Click "Create Web Service"
+
+Your endpoint will be available at: `https://your-service.onrender.com/identify`
+
+#### Option 2: Using Vercel
+
+1. Go to [vercel.com](https://vercel.com) and sign up
+2. Click "New Project" and select your GitHub repository
+3. Add environment variable: `DATABASE_URL` with your PostgreSQL connection string
+4. Click "Deploy"
+
+Your endpoint will be available at: `https://your-project.vercel.app/identify`
+
+#### Free PostgreSQL Options:
+- [Render PostgreSQL](https://render.com/docs/databases)
+- [Neon](https://neon.tech)
+- [Supabase](https://supabase.com)
 
 ## Error Handling
 

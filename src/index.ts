@@ -88,7 +88,7 @@ async function findPrimaryContact(contactIds: Set<number>): Promise<number> {
 /**
  * Main identify endpoint
  */
-app.post("/api/identify", async (req: Request, res: Response): Promise<void> => {
+app.post("/identify", async (req: Request, res: Response): Promise<void> => {
   try {
     const { email, phoneNumber }: IdentifyRequest = req.body;
 
