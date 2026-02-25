@@ -260,7 +260,7 @@ app.post("/identify", async (req: Request, res: Response): Promise<void> => {
 });
 
 // Health check endpoint
-app.get("/api/health", (req: Request, res: Response) => {
+app.get("/health", (req: Request, res: Response) => {
   res.json({ status: "ok" });
 });
 
@@ -269,8 +269,8 @@ app.get("/", (req: Request, res: Response) => {
   res.json({ 
     message: "Bitespeed Identity Reconciliation API",
     endpoints: {
-      identify: "POST /api/identify",
-      health: "GET /api/health"
+      identify: "POST /identify",
+      health: "GET /health"
     }
   });
 });
